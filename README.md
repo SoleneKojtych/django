@@ -1,0 +1,2 @@
+# djanjo
+Small Django projects
