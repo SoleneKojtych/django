@@ -29,6 +29,7 @@ class Genre(models.Model):
 
 
 
+
 class Book(models.Model):
     """A typical class defining a model, derived from the Model class."""
 
@@ -52,7 +53,8 @@ class Book(models.Model):
     genre = models.ManyToManyField(
         Genre, help_text="Select a genre for this book")
 
-    #language = models.CharField(max_length=20, help_text='Enter field documentation')
+    language = models.ManyToManyField("Language",help_text="Select a language for this book")
+
 
 
     # Metadata
@@ -61,6 +63,10 @@ class Book(models.Model):
         ordering = ['title']
 
     # Methods
+    def display_genre(self):
+        """Create a string for the Genre. This is required to display genre in Admin."""
+        return ', '.join(genre.name for genre in self.genre.all()[:3])
+    display_genre.short_description = 'Genre'
 
     # required
     def __str__(self):
@@ -105,7 +111,6 @@ class BookInstance(models.Model):
         ordering = ['due_back']
 
     # Methods
-
 
     def __str__(self):
         """String for representing the Model object."""
