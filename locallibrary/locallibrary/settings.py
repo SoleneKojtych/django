@@ -53,11 +53,12 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'locallibrary.urls'
 
+# Location of templates html files
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
-        'APP_DIRS': True,
+        'DIRS': [],   # explicit location if needed
+        'APP_DIRS': True,    # search template in subdirectory "templates" for each app
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
